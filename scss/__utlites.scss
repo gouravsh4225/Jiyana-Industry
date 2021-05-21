@@ -1,0 +1,41 @@
+@import "./_mixingClass";
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media only screen and (min-width: 576px) {
+    max-width: 540px;
+  }
+  @media only screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media only screen and (min-width: 992px) {
+    max-width: 960px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    max-width: 1200px;
+  }
+}
+.container-fluid {
+  width: 100%;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+
+.ob-fit-cover {
+  object-fit: cover;
+}
+.ob-fit-contain {
+  object-fit: contain;
+}

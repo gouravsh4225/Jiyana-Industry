@@ -1,0 +1,9 @@
+@mixin flexLayout {
+  display: flex;
+  align-items: center;
+}
+
+@mixin paddingLeftAndRight {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

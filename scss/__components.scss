@@ -1,0 +1,447 @@
+@import "./_variable";
+@import "./_mixingClass";
+@import "./_animation";
+
+// Alert component styling
+.alert-container {
+  @include flexLayout;
+  background-color: $bg-danger;
+  height: 2rem;
+  font-family: $ff;
+  z-index: 9;
+  overflow: hidden;
+  p {
+    position: relative;
+    width: 100%;
+    animation: MoveTextRightToLeft 9s linear infinite;
+  }
+}
+
+// End of Alert component Styling
+
+// Header Styling start
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: $bg-white;
+}
+
+.header {
+  @include flexLayout;
+  padding: 2rem;
+  justify-content: space-between;
+  transition: all 1s;
+  position: relative;
+
+  .nav__hambuger-icon {
+    width: 50px;
+    height: 50px;
+    display: none;
+  }
+  .header__brand {
+    @include flexLayout;
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
+  }
+
+  .nav__lists {
+    @include flexLayout;
+    .nav__item {
+      margin-right: 10px;
+    }
+
+    .nav__link {
+      cursor: pointer;
+      padding: 0.8rem;
+      display: block;
+      color: $color-primary;
+      font-family: $ff;
+      transition: background-color, color 1s;
+      position: relative;
+      border-radius: 30px;
+      &:hover {
+        opacity: 0.8;
+        background-color: $bg-header;
+        color: $bg-white;
+      }
+    }
+    .active-route {
+      color: $bg-white;
+      background: linear-gradient(90deg, rgba(200, 212, 255, 1));
+      box-shadow: 0px 0px 3px -1px $bg-header;
+    }
+    @media only screen and (max-width: 720px) {
+      @include flexLayout;
+      position: absolute;
+      top: 100%;
+      background-color: $bg-white;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      height: 0px;
+      overflow: hidden;
+      transition: height 5s;
+      .nav__link {
+        margin-bottom: 0.9rem;
+      }
+    }
+  }
+  .nav__icon-container {
+    display: inline-block;
+    cursor: pointer;
+    .bar1,
+    .bar2,
+    .bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: $bg-header;
+      margin: 6px 0;
+      transition: 0.4s;
+      outline: none;
+    }
+  }
+
+  @media only screen and (max-width: 720px) {
+    .nav__hambuger-icon {
+      @include flexLayout;
+      justify-content: center;
+    }
+  }
+}
+
+.height-full {
+  height: auto !important;
+  transition: all 8s;
+}
+
+// End of header styling
+
+// Banner
+
+.banner-container {
+  @include flexLayout;
+  background-color: $bg-header;
+  background-image: url("../../assets/images/Blank-Door-Variations.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40rem;
+  width: 100%;
+  .banner-card {
+    background-color: $bg-card;
+    width: 30rem;
+    padding: 3rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px $bg-card;
+    @media only screen and (max-width: 768px) {
+      width: 90%;
+      margin: auto;
+    }
+    h3 {
+      font-family: $ff;
+      font-size: 2rem;
+      letter-spacing: 5px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      span {
+        display: block;
+        text-align: left;
+      }
+    }
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+    .banner-btn {
+      border-radius: 10px;
+      background-color: $bg-header;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: $bg-white;
+      box-shadow: 0px 10px 10px $color-primary;
+      transition: background-color, opacity 0.6s ease-in;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      &:hover {
+        background-color: $color-primary;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+// End of banner
+
+//Service
+
+.service-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  //   padding-top: 3rem;
+  color: #191d34;
+  .service--heading {
+    text-align: center;
+    font-size: 3rem;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 20%;
+      bottom: -8px;
+      height: 0.5rem;
+      background-color: $bg-card;
+    }
+  }
+  .service-cards {
+    display: block;
+    // display: flex;
+    margin-top: 3rem;
+
+    @media only screen and (min-width: 786px) {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+    @media only screen and (min-width: 992px) and (min-width: 1024px) {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(4, minmax(250px, 1fr));
+    }
+  }
+  .service-card {
+    @include flexLayout;
+    margin-right: 0.1rem;
+    position: relative;
+    width: 100%;
+    border-radius: 0.4rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    color: $bg-white;
+    margin-top: 1rem;
+    .service-content {
+      position: absolute;
+      bottom: 10%;
+      left: 20%;
+      right: 20%;
+      opacity: 1;
+      transition: all 0.5s ease-in;
+      .service-count {
+        font-size: 2rem;
+        color: $bg-card;
+        letter-spacing: 3px;
+        margin-bottom: 0.5rem;
+      }
+      .service-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      // box-shadow: 0px 0px 8px #f0761d;
+    }
+    .service-card-image {
+      height: 550px;
+      width: 100%;
+      border-radius: 0.4rem;
+    }
+    .service-card-overlay {
+      @include flexLayout;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      position: absolute;
+      width: 0;
+      bottom: 0;
+      top: 0;
+      height: 0;
+      width: 100%;
+      background-color: $bg-card;
+      transition: height 0.9s;
+      & > * {
+        opacity: 0;
+        color: $bg-white;
+      }
+      .overlay-count {
+        font-size: 3.2rem;
+        font-weight: 600;
+        letter-spacing: 4px;
+        margin-bottom: 1rem;
+        display: block;
+        font-family: $ff;
+      }
+      .overlay-description {
+        font-size: 1.3rem;
+        letter-spacing: 4px;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+      .serrvice-btn {
+        text-transform: capitalize;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        border-bottom: 2px solid $bg-white;
+        transform: translateX(0);
+        transition: transform 0.5s ease-in;
+        &:hover {
+          transform: translateX(10%);
+        }
+      }
+    }
+
+    &:hover {
+      .service-content {
+        opacity: 0;
+        transition: opacity 0.2s ease-in;
+      }
+      .service-card-overlay {
+        height: 100%;
+        & > * {
+          opacity: 1;
+          transition: opacity 0.5s ease-in;
+        }
+      }
+    }
+  }
+}
+
+//Connect Together
+
+.connect-together {
+  margin-top: 3rem;
+  background: $bg-card;
+  position: relative;
+  z-index: 0;
+  .connect-section {
+    padding: 5rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media only screen and (max-width: 992px) {
+      flex-direction: column;
+      text-align: center;
+      .connect-together-btn {
+        margin-top: 1rem;
+      }
+    }
+  }
+  .connect-heading {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: capitalize;
+    span {
+      display: block;
+    }
+  }
+  .connect-together-btn {
+    position: relative;
+    color: $bg-white;
+    background: $bg-header;
+    border: medium none;
+    border-radius: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 0;
+    margin-bottom: 0;
+    padding: 25px 22px;
+    text-align: center;
+    text-transform: capitalize;
+    touch-action: manipulation;
+    transition: all 0.3s ease 0s;
+    vertical-align: middle;
+    white-space: nowrap;
+    font-family: $ff;
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      background: #fff;
+      width: 100%;
+      height: 100%;
+      top: 8px;
+      left: -8px;
+      z-index: -1;
+      transition: all 0.4s ease-out 0s;
+    }
+    &:hover {
+      &::before {
+        left: 1rem;
+        top: 0.7rem;
+        transition: all 0.4s ease-out 0s;
+      }
+    }
+  }
+}
+
+/// Footer Start
+
+.footer-section {
+  background: $bg-header;
+  padding-top: 130px;
+  padding-bottom: 120px;
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    align-content: stretch;
+    // padding: 5rem 0;
+  }
+  .footer-col {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: $text-footer;
+    .footer-heading {
+      color: $bg-white;
+      font-size: 1.3rem;
+      margin-bottom: 1.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+    .footer-descript {
+      color: $text-footer;
+      font-size: 1rem;
+      margin-bottom: 50px;
+      line-height: 1.8;
+    }
+  }
+  ul li {
+    color: $text-footer;
+    margin-bottom: 9px;
+    a {
+      color: $text-footer;
+      font-weight: 300;
+      transition: all 0.5s ease-in;
+      &:hover {
+        padding-left: 10px;
+        color: $bg-card;
+      }
+    }
+  }
+  .address {
+    font-family: $ff;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    word-break: break;
+    white-space: initial;
+    padding-right: 2rem;
+  }
+  .contact-us {
+    color: $text-footer;
+  }
+
+  @media only screen and (max-width: 720px) {
+    padding-top: 4rem;
+    padding-bottom: 0;
+  }
+}
